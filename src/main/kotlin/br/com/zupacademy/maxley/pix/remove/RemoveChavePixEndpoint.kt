@@ -21,9 +21,7 @@ class RemoveChavePixEndpoint(
 
         val chave = service.remove(pixId = request.pixId, clienteId = request.clienteId)
 
-        responseObserver.onNext(RemoveChavePixResponse.newBuilder()
-            .setChave(chave)
-            .build())
+        responseObserver.onNext(RemoveChavePixResponse.newBuilder().setChave(chave).build())
 
         responseObserver.onCompleted()
     }

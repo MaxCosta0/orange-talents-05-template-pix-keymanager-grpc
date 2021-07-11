@@ -30,7 +30,7 @@ class RemoveChavePixService(
 
         val uuidClientId = UUID.fromString(clienteId)
 
-        //A chave pix ja deve ter sido resgistrada previamente
+       //A chave pix ja deve ter sido resgistrada previamente
        val chavePix = chavePixRepository.findByIdAndClientId(pixId, uuidClientId)
            .orElseThrow{ChavePixNaoEncontradaException("Chave pix nao encontrada")}
 
