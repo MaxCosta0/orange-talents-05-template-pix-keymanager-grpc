@@ -6,7 +6,6 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version "1.4.32"
     id("org.jetbrains.kotlin.plugin.jpa") version "1.4.32"
     id("com.google.protobuf") version "0.8.15"
-//    id("org.jetbrains.kotlin.kapt") version "1.5.20"
 }
 
 version = "0.1"
@@ -45,6 +44,9 @@ dependencies {
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.hibernate:hibernate-validator:6.1.6.Final")
+
+    testImplementation("com.h2database:h2")
+    testImplementation("org.mockito:mockito-core")
 }
 
 

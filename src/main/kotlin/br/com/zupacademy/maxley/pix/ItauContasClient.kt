@@ -7,7 +7,7 @@ import io.micronaut.http.annotation.QueryValue
 import io.micronaut.http.client.annotation.Client
 
 @Client(value = "http://localhost:9091/api/v1")
-interface ClienteItau {
+interface ItauContasClient {
     @Get(value = "/clientes/{clienteId}")
-    fun buscaContaPorTipo(clienteId: String, @QueryValue tipoConta: TipoDeConta): HttpResponse<ContaResponse>
+    fun buscaContaPorTipo(clienteId: String, @QueryValue tipoContaItau: TipoContaItau): HttpResponse<ContaResponse>
 }

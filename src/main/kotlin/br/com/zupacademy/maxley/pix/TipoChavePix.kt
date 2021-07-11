@@ -3,7 +3,8 @@ package br.com.zupacademy.maxley.pix
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator
 import org.hibernate.validator.internal.constraintvalidators.hv.br.CPFValidator
 
-enum class TipoDeChave {
+enum class TipoChavePix {
+
     CPF {
         override fun valida(chave: String?): Boolean {
             if (chave.isNullOrBlank()) {
@@ -20,6 +21,7 @@ enum class TipoDeChave {
             }
         }
     },
+
     CELULAR {
         override fun valida(chave: String?): Boolean {
             if (chave.isNullOrBlank()) {
@@ -28,6 +30,7 @@ enum class TipoDeChave {
             return chave.matches("^\\+[1-9][0-9]\\d{1,14}\$".toRegex())
         }
     },
+
     EMAIL {
         override fun valida(chave: String?): Boolean {
             if (chave.isNullOrBlank()) {
@@ -39,8 +42,15 @@ enum class TipoDeChave {
             }
         }
     },
+
     ALEATORIA {
         override fun valida(chave: String?) = chave.isNullOrBlank() // não deve se preenchida
+    },
+
+    UNKNOWN_TIPO_CHAVE {
+        override fun valida(chave: String?): Boolean {
+            return false
+        }
     };
 
     abstract fun valida(chave: String?): Boolean

@@ -3,15 +3,14 @@ package br.com.zupacademy.maxley.pix.registra
 import br.com.zupacademy.maxley.KeyManagerServiceGrpc
 import br.com.zupacademy.maxley.RegistraChavePixRequest
 import br.com.zupacademy.maxley.RegistraChavePixResponse
-import br.com.zupacademy.maxley.shared.ErrorAroundHandler
+import br.com.zupacademy.maxley.shared.grpc.ErrorHandler
 import io.grpc.stub.StreamObserver
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@ErrorAroundHandler
+@ErrorHandler
 @Singleton
-class RegistraChaveEndpoint(@Inject val service: NovaChavePixService,)
+class RegistraChaveEndpoint(@Inject private val service: NovaChavePixService)
     : KeyManagerServiceGrpc.KeyManagerServiceImplBase() {
 
     override fun registra(
@@ -22,8 +21,8 @@ class RegistraChaveEndpoint(@Inject val service: NovaChavePixService,)
         val novaChavePix = service.registra(novaChavePixRequest)
 
         responseObserver.onNext(RegistraChavePixResponse.newBuilder()
-            .setClienteId(request.clientId)
-            .setPixId(UUID.randomUUID().toString())
+            .setClienteId(novaChavePix.clientId.toString())
+            .setPixId(novaChavePix.id.toString())
             .build())
 
         responseObserver.onCompleted()

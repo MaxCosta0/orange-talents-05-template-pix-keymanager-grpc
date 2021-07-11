@@ -1,6 +1,7 @@
-package br.com.zupacademy.maxley.shared
+package br.com.zupacademy.maxley.shared.grpc
 
 import io.micronaut.aop.Around
+import io.micronaut.context.annotation.Type
 import kotlin.annotation.AnnotationRetention.RUNTIME
 import kotlin.annotation.AnnotationTarget.*
 
@@ -8,4 +9,5 @@ import kotlin.annotation.AnnotationTarget.*
 @Retention(RUNTIME)
 @Target(CLASS, FILE, FUNCTION, PROPERTY_GETTER, PROPERTY_SETTER)
 @Around
-annotation class ErrorAroundHandler
+@Type(ExceptionHandlerInterceptor::class)
+annotation class ErrorHandler
