@@ -63,12 +63,12 @@ class NovaChavePixService(
             )
         )
 
-//        logger.info(chavePixBcbRequest.toString())
-
         val bcbResponse =  bcbClient.registraChavePix(chavePixBcbRequest)
 
         if (bcbResponse.status != HttpStatus.CREATED) {
-            throw IllegalStateException("Nao foi possivel registrar chave pix no Banco Central")
+            throw IllegalStateException(
+                "Nao foi possivel registrar chave pix '${chavePix.chave}' no Banco Central"
+            )
         }
 
         chavePix.atualizaChave(bcbResponse.body()!!.key)

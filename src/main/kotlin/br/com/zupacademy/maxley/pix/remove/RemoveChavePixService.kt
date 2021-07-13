@@ -49,7 +49,7 @@ class RemoveChavePixService(
         )
 
         if (response.status != HttpStatus.OK) {
-            throw IllegalStateException("Nao foi possivel deletar a chave no Banco Central")
+            throw IllegalStateException("Nao foi possivel deletar a chave '${chavePix.chave}' no Banco Central")
         }
 
         chavePixRepository.deleteById(pixId)
