@@ -1,6 +1,6 @@
-package br.com.zupacademy.maxley.pix.repository
+package br.com.zupacademy.maxley.repository
 
-import br.com.zupacademy.maxley.pix.model.ChavePix
+import br.com.zupacademy.maxley.model.ChavePix
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.jpa.repository.JpaRepository
 import java.util.*

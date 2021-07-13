@@ -5,12 +5,12 @@ import br.com.zupacademy.maxley.RegistraChavePixRequest
 import br.com.zupacademy.maxley.TipoDeChave
 import br.com.zupacademy.maxley.TipoDeConta
 import br.com.zupacademy.maxley.conta.dto.ContaResponse
-import br.com.zupacademy.maxley.conta.dto.Instituicao
-import br.com.zupacademy.maxley.pix.ItauContasClient
+import br.com.zupacademy.maxley.conta.dto.InstituicaoResponse
+import br.com.zupacademy.maxley.integration.itau.ItauContasClient
 import br.com.zupacademy.maxley.pix.TipoChavePix
 import br.com.zupacademy.maxley.pix.TipoContaItau
-import br.com.zupacademy.maxley.pix.model.ChavePix
-import br.com.zupacademy.maxley.pix.repository.ChavePixRepository
+import br.com.zupacademy.maxley.model.ChavePix
+import br.com.zupacademy.maxley.repository.ChavePixRepository
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
@@ -23,7 +23,6 @@ import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.Assert
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -175,7 +174,7 @@ internal class RegistraChaveEndpointTest(
             id = "c56dfef4-7901-44fb-84e2-a2cefb157890",
             nome =  "Rafael M C Ponte",
             cpf = "02467781054",
-            instituicao = Instituicao( "ITAÚ UNIBANCO S.A.", ispb = "60701190")
+            instituicao = InstituicaoResponse( "ITAÚ UNIBANCO S.A.", ispb = "60701190")
         )
     }
 

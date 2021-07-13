@@ -4,8 +4,8 @@ import br.com.zupacademy.maxley.KeyManagerRemoveGrpcServiceGrpc
 import br.com.zupacademy.maxley.RemoveChavePixRequest
 import br.com.zupacademy.maxley.pix.TipoChavePix
 import br.com.zupacademy.maxley.pix.TipoContaItau
-import br.com.zupacademy.maxley.pix.model.ChavePix
-import br.com.zupacademy.maxley.pix.repository.ChavePixRepository
+import br.com.zupacademy.maxley.model.ChavePix
+import br.com.zupacademy.maxley.repository.ChavePixRepository
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException

@@ -47,6 +47,9 @@ dependencies {
 
     testImplementation("com.h2database:h2")
     testImplementation("org.mockito:mockito-core")
+
+    //XML SERIALIZATION AND DESERIALIZATION
+    implementation("io.micronaut.xml:micronaut-jackson-xml")
 }
 
 

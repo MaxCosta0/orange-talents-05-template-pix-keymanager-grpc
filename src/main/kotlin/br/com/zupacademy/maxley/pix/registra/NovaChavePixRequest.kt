@@ -2,7 +2,8 @@ package br.com.zupacademy.maxley.pix.registra
 
 import br.com.zupacademy.maxley.pix.TipoChavePix
 import br.com.zupacademy.maxley.pix.TipoContaItau
-import br.com.zupacademy.maxley.pix.model.ChavePix
+import br.com.zupacademy.maxley.model.ChavePix
+import br.com.zupacademy.maxley.model.ContaAssociada
 import br.com.zupacademy.maxley.shared.ValidPixKey
 import br.com.zupacademy.maxley.shared.validation.ValidUUID
 import io.micronaut.core.annotation.Introspected
@@ -24,12 +25,13 @@ data class NovaChavePixRequest(
     @field:NotNull
     val tipoContaItau: TipoContaItau
 ){
-    fun toChavePix(): ChavePix{
+    fun toChavePix(conta: ContaAssociada): ChavePix {
         return ChavePix(
             clientId = UUID.fromString(this.clientId),
             tipoChavePix = this.tipoChavePix,
             chave = if(this.tipoChavePix == TipoChavePix.ALEATORIA) UUID.randomUUID().toString() else this.chave!!,
-            tipoContaItau = this.tipoContaItau
+            tipoContaItau = this.tipoContaItau,
+            conta = conta
         )
     }
 }
