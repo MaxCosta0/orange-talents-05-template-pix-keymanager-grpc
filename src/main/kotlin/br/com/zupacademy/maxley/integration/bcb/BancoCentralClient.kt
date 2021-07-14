@@ -2,6 +2,7 @@ package br.com.zupacademy.maxley.integration.bcb
 
 import br.com.zupacademy.maxley.integration.bcb.dto.ChavePixBcbRequest
 import br.com.zupacademy.maxley.integration.bcb.dto.ChavePixBcbResponse
+import br.com.zupacademy.maxley.integration.bcb.dto.ConsultaChaveBcbResponse
 import br.com.zupacademy.maxley.integration.bcb.dto.DeletePixKeyRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
@@ -21,4 +22,9 @@ interface BancoCentralClient {
         @PathVariable key: String,
         @Body deletePixKeyRequest: DeletePixKeyRequest
     ): HttpResponse<Map<String, Any>>
+
+    @Get("/{key}")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    fun consultaChave(@PathVariable key: String): HttpResponse<ConsultaChaveBcbResponse>
 }

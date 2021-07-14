@@ -82,7 +82,7 @@ internal class RemoveChavePixEndpointTest(
         val response = grpcClient.remove(
             RemoveChavePixRequest.newBuilder()
                 .setClienteId(CLIENT_ID.toString())
-                .setPixId(chavePix.id ?: 1L)
+                .setPixId(chavePix.id.toString())
                 .build()
         )
 
@@ -98,7 +98,7 @@ internal class RemoveChavePixEndpointTest(
             grpcClient.remove(
                 RemoveChavePixRequest.newBuilder()
                     .setClienteId(CLIENT_ID.toString())
-                    .setPixId(1L)
+                    .setPixId(UUID.randomUUID().toString())
                     .build()
             )
         }
@@ -141,7 +141,7 @@ internal class RemoveChavePixEndpointTest(
         val exception = assertThrows<StatusRuntimeException>{
             grpcClient.remove(
                 RemoveChavePixRequest.newBuilder()
-                    .setPixId(chavePix.id ?: 1L)
+                    .setPixId(chavePix.id.toString())
                     .setClienteId(CLIENT_ID.toString())
                     .build()
             )

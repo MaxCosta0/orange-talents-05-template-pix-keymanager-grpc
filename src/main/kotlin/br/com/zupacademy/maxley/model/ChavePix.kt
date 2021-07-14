@@ -2,6 +2,8 @@ package br.com.zupacademy.maxley.model
 
 import br.com.zupacademy.maxley.pix.TipoChavePix
 import br.com.zupacademy.maxley.pix.TipoContaItau
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
 
@@ -17,11 +19,17 @@ class ChavePix(
     val conta: ContaAssociada
 ) {
     @Id @GeneratedValue
-    var id: Long? = null
+    var id: UUID? = null
+
+    val criadaEm: LocalDateTime = LocalDateTime.now()
 
     fun atualizaChave(chave: String) {
         if (tipoChavePix == TipoChavePix.ALEATORIA) {
             this.chave = chave
         }
+    }
+
+    fun pertenceAo(clientId: UUID): Boolean {
+        return this.clientId == clientId
     }
 }

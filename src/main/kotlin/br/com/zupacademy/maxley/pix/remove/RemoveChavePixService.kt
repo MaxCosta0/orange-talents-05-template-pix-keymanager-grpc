@@ -3,14 +3,10 @@ package br.com.zupacademy.maxley.pix.remove
 import br.com.zupacademy.maxley.integration.bcb.BancoCentralClient
 import br.com.zupacademy.maxley.integration.bcb.dto.DeletePixKeyRequest
 import br.com.zupacademy.maxley.pix.ChavePixNaoEncontradaException
-import br.com.zupacademy.maxley.integration.itau.ItauContasClient
 import br.com.zupacademy.maxley.repository.ChavePixRepository
 import br.com.zupacademy.maxley.shared.validation.ValidUUID
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import java.lang.IllegalStateException
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,18 +21,19 @@ class RemoveChavePixService(
     @Inject private val bcbClient: BancoCentralClient
 ) {
 
-    val logger: Logger = LoggerFactory.getLogger(this::class.java)
+//    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     @Transactional
     fun remove(
-        @NotNull pixId: Long,
+        @NotNull pixId: String,
         @NotBlank @ValidUUID clienteId: String
     ) : String {
 
+        val uuidPixId = UUID.fromString(pixId)
         val uuidClientId = UUID.fromString(clienteId)
 
         //A chave pix ja deve ter sido resgistrada previamente
-        val chavePix = chavePixRepository.findByIdAndClientId(pixId, uuidClientId)
+        val chavePix = chavePixRepository.findByIdAndClientId(uuidPixId, uuidClientId)
             .orElseThrow{ChavePixNaoEncontradaException("Chave pix nao encontrada")}
 
         //Remover chave do Banco Central
@@ -52,7 +49,7 @@ class RemoveChavePixService(
             throw IllegalStateException("Nao foi possivel deletar a chave '${chavePix.chave}' no Banco Central")
         }
 
-        chavePixRepository.deleteById(pixId)
+        chavePixRepository.deleteById(uuidPixId)
         return chavePix.chave
     }
 }
