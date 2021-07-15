@@ -23,11 +23,11 @@ class ListaChavePixEndpoint(
         responseObserver: StreamObserver<ListaChavePixResponse>
     ) {
 
-        val clientId = UUID.fromString(request.clientId)
-
         if (request.clientId.isNullOrBlank()) {
             throw IllegalArgumentException("clientId nao pode estar em branco ou nulo")
         }
+
+        val clientId = UUID.fromString(request.clientId)
 
         val chavesDoCliente = chavePixRepository.findAllByClientId(clientId)
             .map { chavePix ->

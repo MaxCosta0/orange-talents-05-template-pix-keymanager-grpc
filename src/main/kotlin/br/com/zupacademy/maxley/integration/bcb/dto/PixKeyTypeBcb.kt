@@ -8,7 +8,8 @@ enum class PixKeyTypeBcb(val domainType: TipoChavePix?) {
     CNPJ(null),
     PHONE(TipoChavePix.CELULAR),
     EMAIL(TipoChavePix.EMAIL),
-    RANDOM(TipoChavePix.ALEATORIA);
+    RANDOM(TipoChavePix.ALEATORIA),
+    UNKNOWN(TipoChavePix.UNKNOWN_TIPO_CHAVE);
 
     companion object{
 

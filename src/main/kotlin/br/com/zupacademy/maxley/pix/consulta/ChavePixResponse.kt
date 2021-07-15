@@ -1,5 +1,6 @@
 package br.com.zupacademy.maxley.pix.consulta
 
+import br.com.zupacademy.maxley.ConsultaChavePixResponse
 import br.com.zupacademy.maxley.model.ChavePix
 import br.com.zupacademy.maxley.pix.TipoChavePix
 import br.com.zupacademy.maxley.pix.TipoContaItau

@@ -99,7 +99,6 @@ message ListaChavePixRequest{
   string clientId = 1;
 }
 
-
 message ListaChavePixResponse{
 
   message ChavePixResponse{
