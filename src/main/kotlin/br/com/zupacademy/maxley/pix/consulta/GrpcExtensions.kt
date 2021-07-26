@@ -4,10 +4,15 @@ import br.com.zupacademy.maxley.ConsultaChavePixRequest
 import javax.validation.ConstraintViolationException
 import javax.validation.Validator
 
+
 fun ConsultaChavePixRequest.toFiltro(validator: Validator): Filtro {
     val filtro = when (filtroCase!!) {
         ConsultaChavePixRequest.FiltroCase.PIXID -> this.pixId.let {
-            Filtro.PorPixId(clientId = it.clientId, pixId = it.pixId)
+            try {
+                Filtro.PorPixId(clientId = it.clientId, pixId = it.pixId)
+            } catch (ex: Exception) {
+                Filtro.Invalido()
+            }
         }
         ConsultaChavePixRequest.FiltroCase.CHAVE -> Filtro.PorChave(this.chave)
         ConsultaChavePixRequest.FiltroCase.FILTRO_NOT_SET -> Filtro.Invalido()

@@ -9,13 +9,17 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 import io.micronaut.http.client.annotation.Client
 
-@Client("http://localhost:8082/api/v1/pix/keys")
+//@Client("http://localhost:8082/api/v1/pix/keys")
+@Client("\${bcb.pix.url}")
 interface BancoCentralClient {
 
-    @Post(consumes = [MediaType.APPLICATION_XML], produces = [MediaType.APPLICATION_XML])
+
+    @Post(value = "/api/v1/pix/keys")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
     fun registraChavePix(@Body request : ChavePixBcbRequest): HttpResponse<ChavePixBcbResponse>
 
-    @Delete("/{key}")
+    @Delete("/api/v1/pix/keys/{key}")
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     fun deletaChavePix(
@@ -23,7 +27,7 @@ interface BancoCentralClient {
         @Body deletePixKeyRequest: DeletePixKeyRequest
     ): HttpResponse<Map<String, Any>>
 
-    @Get("/{key}")
+    @Get("/api/v1/pix/keys/{key}")
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     fun consultaChave(@PathVariable key: String): HttpResponse<ConsultaChaveBcbResponse>

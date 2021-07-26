@@ -24,6 +24,8 @@ micronaut {
 }
 
 dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     kapt("io.micronaut.data:micronaut-data-processor")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-runtime")
@@ -43,7 +45,7 @@ dependencies {
     implementation("io.micronaut:micronaut-validation")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.hibernate:hibernate-validator:6.1.6.Final")
+    implementation("org.hibernate:hibernate-validator:6.1.5.Final")
 
     testImplementation("com.h2database:h2")
     testImplementation("org.mockito:mockito-core")
