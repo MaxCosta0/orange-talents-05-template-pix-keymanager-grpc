@@ -5,7 +5,6 @@ import br.com.zupacademy.maxley.RemoveChavePixRequest
 import br.com.zupacademy.maxley.RemoveChavePixResponse
 import br.com.zupacademy.maxley.shared.grpc.ErrorHandler
 import io.grpc.stub.StreamObserver
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 

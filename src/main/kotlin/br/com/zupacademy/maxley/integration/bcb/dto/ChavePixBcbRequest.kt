@@ -28,26 +28,4 @@ data class ChavePixBcbRequest(
             taxIdNumber = chavePix.conta.cpfDoTitular
         )
     )
-
-//    fun instanciaDe(chavePix: ChavePix): ChavePixBcbRequest {
-//        return ChavePixBcbRequest(
-//            keyType = PixKeyTypeBcb.by(chavePix.tipoChavePix),
-//            key = chavePix.chave,
-//            bankAccount = BankAccountRequest(
-//                participant = chavePix.conta.ITAU_UNIBANCO_ISPB,
-//                branch = chavePix.conta.agencia,
-//                accountNumber = chavePix.conta.numeroDaConta,
-//                accountType = when (chavePix.tipoContaItau) {
-//                    TipoContaItau.CONTA_CORRENTE -> AccountType.CACC
-//                    TipoContaItau.CONTA_POUPANCA -> AccountType.SVGS
-//                    else -> AccountType.UNKNOWN
-//                }
-//            ),
-//            owner = OwnerRequest(
-//                type = TypePerson.NATURAL_PERSON,
-//                name = chavePix.conta.nomeDoTitular,
-//                taxIdNumber = chavePix.conta.cpfDoTitular
-//            )
-//        )
-//    }
 }

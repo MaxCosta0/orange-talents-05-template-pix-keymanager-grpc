@@ -1,11 +1,10 @@
 package br.com.zupacademy.maxley.pix.registra
 
 import br.com.zupacademy.maxley.integration.bcb.BancoCentralClient
-import br.com.zupacademy.maxley.integration.bcb.dto.*
+import br.com.zupacademy.maxley.integration.bcb.dto.ChavePixBcbRequest
 import br.com.zupacademy.maxley.integration.itau.ItauContasClient
 import br.com.zupacademy.maxley.model.ChavePix
 import br.com.zupacademy.maxley.pix.ChavePixExistenteException
-import br.com.zupacademy.maxley.pix.TipoContaItau
 import br.com.zupacademy.maxley.repository.ChavePixRepository
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated

@@ -21,8 +21,6 @@ class RemoveChavePixService(
     @Inject private val bcbClient: BancoCentralClient
 ) {
 
-//    val logger: Logger = LoggerFactory.getLogger(this::class.java)
-
     @Transactional
     fun remove(
         @NotNull pixId: String,

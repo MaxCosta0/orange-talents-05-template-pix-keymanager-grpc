@@ -9,10 +9,8 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 import io.micronaut.http.client.annotation.Client
 
-//@Client("http://localhost:8082/api/v1/pix/keys")
 @Client("\${bcb.pix.url}")
 interface BancoCentralClient {
-
 
     @Post(value = "/api/v1/pix/keys")
     @Consumes(MediaType.APPLICATION_XML)

@@ -1,6 +1,7 @@
 package br.com.zupacademy.maxley.pix.lista
 
 import br.com.zupacademy.maxley.*
+import br.com.zupacademy.maxley.model.ChavePix
 import br.com.zupacademy.maxley.pix.TipoChavePix
 import br.com.zupacademy.maxley.pix.TipoContaItau
 import br.com.zupacademy.maxley.repository.ChavePixRepository
@@ -30,7 +31,19 @@ class ListaChavePixEndpoint(
         val clientId = UUID.fromString(request.clientId)
 
         val chavesDoCliente = chavePixRepository.findAllByClientId(clientId)
-            .map { chavePix ->
+        val chavesResponse = chavesDoClienteResponse(chavesDoCliente)
+
+        responseObserver.onNext(
+            ListaChavePixResponse.newBuilder()
+                .addAllChavesPix(chavesResponse)
+                .build()
+        )
+
+        responseObserver.onCompleted()
+    }
+
+    private fun chavesDoClienteResponse(chavesDoCliente: List<ChavePix>): List<ListaChavePixResponse.ChavePixResponse> {
+        return chavesDoCliente.map { chavePix ->
                 ListaChavePixResponse.ChavePixResponse.newBuilder()
                     .setPixId(chavePix.id.toString())
                     .setClientId(chavePix.clientId.toString())
@@ -59,15 +72,6 @@ class ListaChavePixEndpoint(
                             .build()
                     })
                     .build()
-            }
-
-        responseObserver.onNext(
-            ListaChavePixResponse.newBuilder()
-                .addAllChavesPix(chavesDoCliente)
-                .build()
-        )
-
-        responseObserver.onCompleted()
-
+        }
     }
 }
